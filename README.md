@@ -1,176 +1,171 @@
-# 🚨 Automata Riasztórendszer
+# Automata Riasztórendszer
 
-**Tinkercad és Arduino alapú beadandó dokumentáció**
+<div align="center">
 
-![Arduino](https://img.shields.io/badge/Arduino-Uno-00979D?style=flat&logo=arduino&logoColor=white)
-![Platform](https://img.shields.io/badge/Platform-Tinkercad-E85B2A?style=flat)
-![Language](https://img.shields.io/badge/Language-C%2B%2B-blue?style=flat&logo=cplusplus)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat)
-![Status](https://img.shields.io/badge/Status-Kész-brightgreen?style=flat)
+![Arduino](https://img.shields.io/badge/Arduino-Uno-00979D?style=for-the-badge&logo=arduino&logoColor=white)
+![Platform](https://img.shields.io/badge/Tinkercad-Szimuláció-E85B2A?style=for-the-badge)
+![Language](https://img.shields.io/badge/C++-Forráskód-00599C?style=for-the-badge&logo=cplusplus)
+![License](https://img.shields.io/badge/License-MIT-brightgreen?style=for-the-badge)
+![Status](https://img.shields.io/badge/Státusz-Kész-success?style=for-the-badge)
 
-> 🔗 **Tinkercad szimuláció:** [Kattints ide a szimulációhoz](https://www.tinkercad.com/things/lGVWRD1bFoh/editel?returnTo=%2Fdashboard&sharecode=e10EUwuSezz-bokL_V-uNGx4AJHEmUH73w_tv3J7cUM)
+### 🔗 [▶ Tinkercad Szimuláció Megnyitása](https://www.tinkercad.com/things/lGVWRD1bFoh/editel?returnTo=%2Fdashboard&sharecode=e10EUwuSezz-bokL_V-uNGx4AJHEmUH73w_tv3J7cUM)
 
-| Adat | Leírás |
-|---|---|
-| Készítette | AABMOW - Czeczó Krisztián |
-| Téma | Automata riasztórendszer szimulációja |
-| Környezet | Tinkercad Circuits |
-| Vezérlő | Arduino Uno R3 |
-| Fő funkció | PIR érzékelés, kódzár, szirén, LCD kijelzés |
+</div>
 
 ---
 
-## 📷 Kapcsolási rajz
+<div align="center">
 
-![Kapcsolási rajz](Riaszto.png)
+| Készítette | Tantárgy | Környezet | Titkos kód |
+|:---:|:---:|:---:|:---:|
+| **AABMOW - Czeczó Krisztián** | Digitális Technika II. | Tinkercad Circuits | `1234` + `*` |
 
-*1. ábra: A kész projekt*
-
-| Fájl | Leírás |
-|---|---|
-| [Riaszto.png](Riaszto.png) | Fotó a kész projektről |
-| [Riaszto.pdf](Riaszto.pdf) | Kapcsolási rajz PDF formátumban |
-| [Riaszto.brd](Riaszto.brd) | Eagle board fájl |
+</div>
 
 ---
 
-## 📋 Tartalomjegyzék
+## A projekt
 
-- [A projekt célja](#1-a-projekt-célja)
-- [Felhasznált alkatrészek](#2-felhasznált-alkatrészek)
-- [Pin kiosztás és bekötés](#3-pin-kiosztás-és-bekötés)
-- [Működési elv](#4-a-rendszer-működési-elve)
-- [Programkód](#5-teljes-arduino-programkód)
-- [Tesztelés](#6-tesztelés-tinkercadben)
-- [Hibakeresés](#7-hibakeresés)
-- [Összegzés](#8-összegzés)
+<div align="center">
+
+![Projekt fotó](Riaszto.png)
+
+*A kész riasztórendszer Tinkercad szimulációban*
+
+</div>
 
 ---
 
-## 📁 Repo struktúra
+## Fájlok
 
 ```
 Arduino_Projekt_Digitalis_Technika_II/
 │
-├── riaszto.cpp          # Arduino forráskód (Wire.h, külső könyvtár nélkül)
-├── Riaszto.brd          # Eagle board fájl (kapcsolási rajz)
-├── Riaszto.pdf          # Kapcsolási rajz PDF formátumban
-├── Riaszto.png          # Fotó a kész projektről
-└── README.md            # Dokumentáció
+├── riaszto.cpp        → Arduino forráskód (Wire.h, külső könyvtár nélkül)
+├── Riaszto.brd       → Eagle board fájl
+├── Riaszto.pdf       → Kapcsolási rajz PDF-ben
+├── Riaszto.png       → Fotó a kész projektről
+└── README.md          → Dokumentáció
 ```
 
----
-
-## 1. A projekt célja
-
-A beadandó célja egy kódzárral védett automata riasztórendszer elkészítése Tinkercad környezetben. A rendszer Arduino Uno vezérlőre épül, amely egy PIR mozgásérzékelő jelét dolgozza fel. A riasztó élesítése és hatástalanítása 4×4-es billentyűzettel és titkos kóddal történik. Mozgás esetén piezo szirén és villogó LED jelez, az állapotokat I2C LCD kijelző mutatja.
-
-### 1.1. A megoldandó feladat
-
-- A rendszer élesítése titkos kód beírásával (keypad + `*` gomb).
-- PIR mozgásérzékelő folyamatos figyelése élesített állapotban.
-- Mozgás esetén wee-woo szirénázó hang (`tone()` alapú frekvenciasöprés).
-- Piros LED villogása riasztás alatt.
-- `D` gomb = azonnali hatástalanítás.
-- LCD kijelző: `INAKTIV` / `AKTIV` / `*** RIASZTAS ***` állapotok.
-
-### 1.2. Miért hasznos ez a rendszer?
-
-Egy kódzárral védett riasztórendszer csak jogosult személyek számára kapcsolható ki, így védelmet nyújt illetéktelen belépés ellen. A Tinkercad szimuláció jól szemlélteti az állapotgép alapú vezérlési logikát, a digitális be- és kimenetek kezelését, valamint az I2C kommunikációt.
-
----
-
-## 2. Felhasznált alkatrészek
-
-| Alkatrész | Feladat |
+| Fájl | Megnyitás |
 |---|---|
-| Arduino Uno R3 | Központi vezérlő, minden alkatrészt kezel. |
-| PIR HC-SR501 | Mozgásérzékelő, HIGH jelet ad mozgás esetén. |
-| 4×4 Keypad | Kód bevitelére és a D (kikapcsoló) gombra. |
-| LCD 16×2 I2C (PCF8574) | Állapot kijelzése (INAKTIV / AKTIV / RIASZTAS). |
-| Piezo buzzer (passzív) | Szirénázó hang `tone()` függvénnyel. |
-| Piros LED | Riasztás alatt villog. |
-| 220 Ω ellenállás | LED áramkorlátozás. |
-| Breadboard + vezetékek | Összekötés. |
+| Kapcsolási rajz | [Riaszto.pdf](Riaszto.pdf) |
+| Eagle board | [Riaszto.brd](Riaszto.brd) |
+| Forráskód | [riaszto.cpp](riaszto.cpp) |
 
 ---
 
-## 3. Pin kiosztás és bekötés
+## A projekt célja
 
-| Alkatrész | Láb / jel | Arduino pin |
-|---|---|---|
-| PIR HC-SR501 | VCC | 5V |
-| PIR HC-SR501 | GND | GND |
-| PIR HC-SR501 | OUT | D2 |
-| Keypad | R1, R2, R3, R4 (sorok) | D4, D5, D6, D7 |
-| Keypad | C1, C2, C3, C4 (oszlopok) | D8, D9, D10, D11 |
-| Piezo buzzer | + (pozitív) | D12 |
-| Piezo buzzer | – (negatív) | GND |
-| Piros LED | Anód (+ 220Ω) | D13 |
-| Piros LED | Katód | GND |
-| LCD I2C (PCF8574) | VCC | 5V |
-| LCD I2C (PCF8574) | GND | GND |
-| LCD I2C (PCF8574) | SDA | A4 |
-| LCD I2C (PCF8574) | SCL | A5 |
+A beadandó célja egy **kódzárral védett automata riasztórendszer** elkészítése Tinkercad környezetben. A rendszer Arduino Uno vezérlőre épül, amely egy PIR mozgásérzékelő jelét dolgozza fel. A riasztó élesítése és hatástalanítása **4×4-es billentyűzettel és titkos kóddal** történik. Mozgás esetén **piezo szirén** és **villogó LED** jelez, az állapotokat **I2C LCD kijelző** mutatja.
 
-### 3.1. Fontos megjegyzések
+### Megvalósított funkciók
 
-- A LED-hez kötelező a **220 Ω ellenállás** — nélküle az Arduino pinje tönkremegy.
-- A keypad sorpinei `OUTPUT HIGH`, oszloppinei `INPUT_PULLUP` módban vannak.
-- Az LCD I2C cím `0x20` (32 decimális) — PCF8574 chip, A0–A2 jumperek alapján.
-- A piezo **passzív buzzer** — csak passzív buzzernél működik a `tone()` szirén.
+| # | Funkció | Megvalósítás |
+|:---:|---|---|
+| 1 | Rendszer élesítése | Titkos kód (`1234`) + `*` gomb |
+| 2 | Mozgásérzékelés | PIR HC-SR501 szenzor → D2 |
+| 3 | Riasztó hang | `tone()` wee-woo szirén, 800–2000 Hz |
+| 4 | Vizuális jelzés | Piros LED villog 200ms-onként |
+| 5 | Hatástalanítás | `D` gomb → azonnali kikapcsolás |
+| 6 | Állapot kijelzés | LCD 16×2 I2C, 3 állapot |
 
 ---
 
-## 4. A rendszer működési elve
+## Felhasznált alkatrészek
 
-A program három állapotot különböztet meg: `INAKTIV`, `AKTIV` és `RIASZTAS`.
+| Alkatrész | Darab | Feladat |
+|---|:---:|---|
+| Arduino Uno R3 | 1 | Központi vezérlő |
+| PIR HC-SR501 | 1 | Mozgásérzékelő |
+| 4×4 Keypad | 1 | Kódbevitel + hatástalanítás |
+| LCD 16×2 I2C (PCF8574) | 1 | Állapot kijelzése |
+| Piezo buzzer (passzív) | 1 | Szirénázó hang |
+| Piros LED | 1 | Vizuális riasztás |
+| 220 Ω ellenállás | 1 | LED áramkorlátozás |
+| Breadboard + vezetékek | - | Összekötés |
 
-### 4.1. Állapottáblázat
+---
 
-| Állapot | LCD 1. sor | LCD 2. sor | Buzzer | LED |
-|---|---|---|---|---|
-| INAKTIV | `INAKTIV` | `Kod: ****` | Csendes | Ki |
-| AKTIV | `AKTIV` | `Figyel [D=ki]` | Csendes | Ki |
-| RIASZTAS | `*** RIASZTAS ***` | `Mozgas! [D=stop]` | Szirénázik | Villog |
-
-### 4.2. Állapotátmenetek
+## Pin kiosztás
 
 ```
-┌─────────────────────────────────────────────────────┐
-│                                                     │
-│   [INAKTIV] ──helyes kód + *──► [AKTIV]             │
-│       ▲                            │                │
-│       │                        PIR mozgás           │
-│       │                            │                │
-│    D gomb ◄────────────────── [RIASZTAS]            │
-│    (bármikor)                                       │
-│                                                     │
-└─────────────────────────────────────────────────────┘
+Arduino Uno
+│
+├── D2  ────────── PIR OUT
+├── D4  ────────── Keypad R1 (1. sor)
+├── D5  ────────── Keypad R2 (2. sor)
+├── D6  ────────── Keypad R3 (3. sor)
+├── D7  ────────── Keypad R4 (4. sor)
+├── D8  ────────── Keypad C1 (1. oszlop)
+├── D9  ────────── Keypad C2 (2. oszlop)
+├── D10 ────────── Keypad C3 (3. oszlop)
+├── D11 ────────── Keypad C4 (4. oszlop)
+├── D12 ────────── Buzzer +
+├── D13 ────────── LED anód (220Ω-on át)
+├── A4  ────────── LCD SDA
+├── A5  ────────── LCD SCL
+├── 5V  ────────── PIR VCC, LCD VCC
+└── GND ────────── PIR GND, LCD GND, Buzzer –, LED katód
 ```
 
-| Esemény | Eredmény |
-|---|---|
-| Helyes kód + `*` gomb | INAKTIV → AKTIV |
-| Rossz kód + `*` gomb | Marad INAKTIV, "Hibas kod!" üzenet |
-| PIR mozgást érzékel (AKTIV-ban) | AKTIV → RIASZTAS |
-| `D` gomb lenyomása (bármikor) | → INAKTIV (hatástalanítás) |
-| `#` gomb | Beírt kód törlése |
-
-### 4.3. Szirénázó hang működése
-
-A piezo buzzer a `tone()` Arduino függvénnyel szólal meg. A `riasztoHang()` függvény 4 fázisban folyamatosan változtatja a frekvenciát, klasszikus **wee-woo** szirénát imitálva:
-
-| Fázis | Frekvencia | Jelleg | Időtartam |
-|---|---|---|---|
-| 1 | 800 Hz → 1600 Hz | Felmegy (wee) | 400 ms |
-| 2 | 1600 Hz → 800 Hz | Lemegy (woo) | 400 ms |
-| 3 | 1000 Hz → 2000 Hz | Gyors felmegy | 400 ms |
-| 4 | 600 Hz (fix) | Mély szünet | 400 ms |
+> **Fontos:** LCD I2C cím = `0x20` (PCF8574, 32 decimális)
 
 ---
 
-## 5. Teljes Arduino programkód
+## Működési elv
+
+### Állapotgép
+
+```
+                    helyes kód + *
+   ┌─────────────────────────────────────────┐
+   │                                         ▼
+[INAKTIV]                               [AKTIV]
+   ▲                                         │
+   │                                    PIR mozgás
+   │                                         │
+   └──────────── D gomb ◄──────────── [RIASZTAS]
+                (bármikor)
+```
+
+### Állapottáblázat
+
+| Állapot | LCD 1. sor | LCD 2. sor | 🔊 Buzzer | 💡 LED |
+|:---:|---|---|:---:|:---:|
+| INAKTIV | `  INAKTIV  ` | `Kod: ****` | ❌ | ❌ |
+| AKTIV | `  AKTIV  ` | `Figyel [D=ki]` | ❌ | ❌ |
+| RIASZTAS | `*** RIASZTAS ***` | `Mozgas! [D=stop]` | ✅ | ✅ |
+
+### 🔑 Billentyűzet funkciók
+
+| Gomb | Funkció |
+|:---:|---|
+| `1` `2` `3` `4` | Kód beírása |
+| `*` | Megerősítés / élesítés |
+| `#` | Beírt kód törlése |
+| `D` | Azonnali hatástalanítás |
+
+### 🔊 Szirén hangmintázat
+
+```
+Hz
+2000 │        ╱╲
+1600 │   ╱╲  ╱  ╲
+1000 │  ╱  ╲╱    ────
+ 800 │ ╱
+ 600 │                ────
+     └─────────────────────► idő
+       wee  woo  gyors  mély
+       400ms/fázis
+```
+
+---
+
+## Forráskód
+
+> Csak beépített `Wire.h` könyvtár — **semmilyen külső könyvtár nem szükséges!**
 
 ```cpp
 // ============================================================
@@ -232,7 +227,6 @@ void lcdPrint(const char* szoveg) {
   for (int i = 0; szoveg[i] != '\0'; i++) lcdKarakter(szoveg[i]);
 }
 
-// --- Pinek ---
 const int PIR_PIN    = 2;
 const int BUZZER_PIN = 12;
 const int LED_PIN    = 13;
@@ -246,7 +240,7 @@ char keyMap[4][4] = {
   {'*','0','#','D'}
 };
 
-const String HELYES_KOD = "1234";  // <-- itt változtathatod
+const String HELYES_KOD = "1234";  // titkos kód: 1234 (lezárás: * gomb)
 
 enum Allapot { INAKTIV, AKTIV, RIASZTAS };
 Allapot allapot = INAKTIV;
@@ -320,7 +314,6 @@ void setup() {
 void loop() {
   char bill = olvasKeypad();
   if (bill == 'D') { allapotValt(INAKTIV); return; }
-
   switch (allapot) {
     case INAKTIV:
       if (bill) {
@@ -386,60 +379,70 @@ void lcdHibas() {
 
 ---
 
-## 6. Tesztelés Tinkercadben
+## Tesztelés
 
-### 6.1. Tesztelési lépések
+### Lépések
 
-1. Szimuláció indítása a **Start Simulation** gombbal.
-2. Serial Monitor megnyitása az állapotüzenetek figyeléséhez.
-3. Keypadon `1` `2` `3` `4` begépelése, majd `*` lenyomása → **AKTIV** állapot.
-4. PIR szenzorra kattintás (mozgás szimulálása) → **RIASZTAS**.
-5. LCD ellenőrzése: `*** RIASZTAS ***` felirat megjelenik-e.
-6. LED villogás és buzzer szirénázás ellenőrzése.
-7. `D` gomb lenyomása → **INAKTIV** visszaállás.
+1. Szimuláció indítása — **Start Simulation** gomb
+2. Serial Monitor megnyitása
+3. Keypadon `1` `2` `3` `4` begépelése, majd `*` → **AKTIV**
+4. PIR szenzorra kattintás → **RIASZTAS**
+5. Buzzer szirénázás + LED villogás ellenőrzése
+6. `D` gomb → **INAKTIV** visszaállás
 
-### 6.2. Elvárt eredmények
+### Elvárt eredmények
 
-| Tesztlépés | Elvárt működés |
-|---|---|
-| Helyes kód + `*` | LCD: AKTIV, Serial: `>> AKTIV` |
-| Rossz kód + `*` | LCD: Hibas kod!, 1.2s után visszaáll |
-| PIR mozgás (AKTIV-ban) | LCD: RIASZTAS, buzzer szirénáz, LED villog |
-| `D` gomb (bármikor) | Minden leáll, LCD: INAKTIV |
-| `#` gomb | Beírt kód törlődik |
-
----
-
-## 7. Hibakeresés
-
-| Hiba | Lehetséges megoldás |
-|---|---|
-| LCD nem jelenít meg semmit | I2C cím ellenőrzése: `0x20` helyes-e? SDA→A4, SCL→A5 bekötve? |
-| Keypad nem reagál | ROW/COL pinek ellenőrzése; `INPUT_PULLUP` beállítva? |
-| Buzzer nem szól | Passzív buzzer szükséges `tone()`-hoz; D12 bekötve? |
-| PIR mindig 0 | Tinkercadben kattintani kell a szenzorra a mozgás szimulálásához. |
-| Fordítási hiba | Csak `Wire.h` szükséges — más könyvtár nem kell. |
+| Tesztlépés | Elvárt működés | Eredmény |
+|---|---|:---:|
+| Helyes kód + `*` | LCD: AKTIV, Serial: `>> AKTIV` | ✅ |
+| Rossz kód + `*` | LCD: Hibas kod!, 1.2s után visszaáll | ✅ |
+| PIR mozgás (AKTIV-ban) | Szirén + LED villog | ✅ |
+| `D` gomb | Minden leáll, LCD: INAKTIV | ✅ |
+| `#` gomb | Beírt kód törlődik | ✅ |
 
 ---
 
-## 8. Összegzés
+## Hibakeresés
 
-A beadandóban elkészült egy Tinkercad-ben szimulált, kódzárral védett automata riasztórendszer. A rendszer Arduino Uno vezérlőt, PIR mozgásérzékelőt, 4×4-es billentyűzetet, I2C LCD kijelzőt, piezo buzzert és piros LED-et tartalmaz.
+| Hiba | Megoldás |
+|---|---|
+| LCD nem jelenít meg semmit | I2C cím: `0x20` helyes-e? SDA→A4, SCL→A5? |
+| Keypad nem reagál | `INPUT_PULLUP` beállítva? D4–D11 bekötve? |
+| Buzzer nem szól | **Passzív** buzzer kell `tone()`-hoz! D12 bekötve? |
+| PIR mindig 0 | Tinkercadben kattints a szenzorra! |
+| Fordítási hiba | Csak `Wire.h` kell — más könyvtár nem! |
+
+---
+
+## Összegzés
 
 A projekt bemutatja:
-- Az állapotgép alapú programozást (INAKTIV / AKTIV / RIASZTAS)
-- A digitális be- és kimenetek kezelését
-- Az I2C protokoll közvetlen vezérlését könyvtár nélkül
-- A `tone()` függvény alapú hangszintézist
-- A keypad mátrix szkennelési módszerét
 
-### 8.1. Ellenőrzőlista leadás előtt
+| Fogalom | Megvalósítás |
+|---|---|
+| Állapotgép | INAKTIV → AKTIV → RIASZTAS |
+| I2C kommunikáció | LCD vezérlés könyvtár nélkül |
+| Hangszintézis | `tone()` frekvenciasöprés |
+| Mátrix szkennelés | 4×4 keypad könyvtár nélkül |
+| Nem blokkoló kód | `millis()` alapú időzítés |
 
-- [ ] PIR OUT lába D2-re van kötve.
-- [ ] Keypad 8 lába D4–D11-re van kötve.
-- [ ] Buzzer + lába D12-re, – lába GND-re van kötve.
-- [ ] LED anódja 220Ω ellenálláson át D13-ra, katódja GND-re van kötve.
-- [ ] LCD SDA→A4, SCL→A5, I2C cím: `0x20`.
-- [ ] Helyes kód beírásával (`1234` + `*`) a rendszer AKTIV állapotba lép.
-- [ ] PIR mozgás szimulálására a szirén megszólal és a LED villog.
-- [ ] `D` gombra a rendszer azonnal INAKTIV állapotba áll vissza.
+### Ellenőrzőlista leadás előtt
+
+- [ ] PIR OUT → D2
+- [ ] Keypad 8 láb → D4–D11
+- [ ] Buzzer + → D12, – → GND
+- [ ] LED anód → 220Ω → D13, katód → GND
+- [ ] LCD SDA → A4, SCL → A5, cím: `0x20`
+- [ ] Helyes kód (`1234` + `*`) → AKTIV állapot
+- [ ] PIR mozgás → szirén + LED villog
+- [ ] `D` gomb → INAKTIV visszaállás
+
+---
+
+<div align="center">
+
+**AABMOW - Czeczó Krisztián** | Digitális Technika II.
+
+![Arduino](https://img.shields.io/badge/Arduino-Uno-00979D?style=flat&logo=arduino&logoColor=white)
+
+</div>
