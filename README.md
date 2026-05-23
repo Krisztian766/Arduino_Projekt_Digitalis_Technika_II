@@ -12,7 +12,7 @@
 
 | Adat | Leírás |
 |---|---|
-| Készítette | [Neved - Neptun kód] |
+| Készítette | AABMOW - Czeczó Krisztián |
 | Téma | Automata riasztórendszer szimulációja |
 | Környezet | Tinkercad Circuits |
 | Vezérlő | Arduino Uno R3 |
@@ -22,9 +22,15 @@
 
 ## 📷 Kapcsolási rajz
 
-![Kapcsolási rajz](images/kapcsolasi_rajz.png)
+![Kapcsolási rajz](Riaszto.png)
 
 *1. ábra: A Tinkercad-ben elkészített kapcsolás*
+
+| Fájl | Leírás |
+|---|---|
+| [Riaszto.png](Riaszto.png) | Kapcsolási rajz képként |
+| [Riaszto.pdf](Riaszto.pdf) | Kapcsolási rajz PDF formátumban |
+| [Riaszto.brd](Riaszto.brd) | Eagle board fájl |
 
 ---
 
@@ -38,6 +44,20 @@
 - [Tesztelés](#6-tesztelés-tinkercadben)
 - [Hibakeresés](#7-hibakeresés)
 - [Összegzés](#8-összegzés)
+
+---
+
+## 📁 Repo struktúra
+
+```
+Arduino_Projekt_Digitalis_Technika_II/
+│
+├── riaszto.cpp          # Arduino forráskód (Wire.h, külső könyvtár nélkül)
+├── Riaszto.brd          # Eagle board fájl (kapcsolási rajz)
+├── Riaszto.pdf          # Kapcsolási rajz PDF formátumban
+├── Riaszto.png          # Kapcsolási rajz képként
+└── README.md            # Dokumentáció
+```
 
 ---
 
