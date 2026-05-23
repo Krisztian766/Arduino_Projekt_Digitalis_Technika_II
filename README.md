@@ -24,11 +24,11 @@
 
 ![Kapcsolási rajz](Riaszto.png)
 
-*1. ábra: A Tinkercad-ben elkészített kapcsolás*
+*1. ábra: A kész projekt*
 
 | Fájl | Leírás |
 |---|---|
-| [Riaszto.png](Riaszto.png) | Kapcsolási rajz képként |
+| [Riaszto.png](Riaszto.png) | Fotó a kész projektről |
 | [Riaszto.pdf](Riaszto.pdf) | Kapcsolási rajz PDF formátumban |
 | [Riaszto.brd](Riaszto.brd) | Eagle board fájl |
 
@@ -55,7 +55,7 @@ Arduino_Projekt_Digitalis_Technika_II/
 ├── riaszto.cpp          # Arduino forráskód (Wire.h, külső könyvtár nélkül)
 ├── Riaszto.brd          # Eagle board fájl (kapcsolási rajz)
 ├── Riaszto.pdf          # Kapcsolási rajz PDF formátumban
-├── Riaszto.png          # Kapcsolási rajz képként
+├── Riaszto.png          # Fotó a kész projektről
 └── README.md            # Dokumentáció
 ```
 
